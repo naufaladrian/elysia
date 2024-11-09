@@ -1,7 +1,11 @@
 import { Elysia } from "elysia";
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+const app = new Elysia().get("/", () => "Hello Elysia");
 
-console.log(
-  `🦊 Elysia is running at http://${app.server?.hostname}:${app.server?.port}`
-);
+// Gunakan process.env.PORT untuk menangani port yang dinamis di Vercel
+const port = process.env.PORT || 3000;
+
+app.listen(port)
+
+console.log(`🦊 Elysia is running at http://localhost:${port}`);
+
